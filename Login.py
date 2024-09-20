@@ -119,9 +119,8 @@ def get_semesters_list(driver):
     semesters_list = previous_semesters + current_semesters
     return semesters_list, previous_semesters, current_semesters
 
-def switch_to_semester(driver, semester):
+def switch_to_semester(driver, semester, previous_semesters):
     wait = WebDriverWait(driver, 10)
-    semesters_list, previous_semesters, current_semesters = get_semesters_list(driver)
     try:
         cur_page = driver.find_element(By.ID, "TERM_VAL_TBL_DESCR").text
     except:
