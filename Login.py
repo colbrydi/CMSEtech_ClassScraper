@@ -25,7 +25,7 @@ def get_driver(choice):
             print('Headless/Invisible Driver')
         return driver
     return None
-
+        
 def login_to_SIS(driver):
     wait = WebDriverWait(driver, 10)
     url = "https://student.msu.edu/splash.html"
@@ -68,24 +68,22 @@ def login_to_SIS(driver):
      
     element = driver.find_element(By.CLASS_NAME, 'o-form-button-bar') # Click Verify
     element.click()
-    time.sleep(5)
-
-    try:
-        element = driver.find_element(By.ID, "PTNUI_LAND_REC_GROUPLET_LBL$1") # Click on Classes
+    time.sleep(3)
+    try: 
+        element = wait.until(EC.element_to_be_clickable((By.ID, "PTNUI_LAND_REC_GROUPLET_LBL$1")))
         element.click()
         time.sleep(3)
-    except: # In case the website want to login again
-        element = driver.find_element(By.ID, 'loginUrl1') # Click on Login
+    except:
+        element = wait.until(EC.element_to_be_clickable(By.ID, 'loginUrl1'))
         element.click()
-        wait.until(EC.element_to_be_clickable((By.ID, "PTNUI_LAND_REC_GROUPLET_LBL$1")))
-        element = driver.find_element(By.ID, "PTNUI_LAND_REC_GROUPLET_LBL$1")  # Click on Classes
+        element = wait.until(EC.element_to_be_clickable((By.ID, "PTNUI_LAND_REC_GROUPLET_LBL$1")))
         element.click()
         time.sleep(3)
         
     try:
         element = driver.find_element(By.ID, 'SCC_LO_FL_WRK_SCC_VIEW_BTN$2')  # Click on Class Search & Enroll
         driver.execute_script("arguments[0].click();", element)
-        time.sleep(3)
+        wait.until(EC.element_to_be_clickable((By.ID, "DERIVED_SSR_FL_SSR_CSTRMPRV_GRP")))
     except:
         pass # If there's no Class Search & Enroll, proceed
     
@@ -127,7 +125,7 @@ def switch_to_semester(driver, semester, previous_semesters):
         cur_page = None 
 
     if cur_page == semester.replace('Semester ', ''):
-        return None
+        return "No need to switch Semester"
         
     if cur_page and cur_page != semester.replace('Semester ', ''):
         change_semester = "javascript:submitAction_win9(document.win9,'DERIVED_SSR_FL_SSR_CHANGE_BTN');"
@@ -145,4 +143,4 @@ def switch_to_semester(driver, semester, previous_semesters):
     
     driver.switch_to.default_content()
     time.sleep(1)
-    return None
+    return f"Switch to {semester}"
