@@ -27,7 +27,7 @@ def get_driver(choice):
     return None
         
 def login_to_SIS(driver, authenticate='Phone'):
-    wait = WebDriverWait(driver, 10)
+    wait = WebDriverWait(driver, 20)
     url = "https://student.msu.edu/splash.html"
     driver.get(url)
     wait.until(EC.element_to_be_clickable((By.ID , 'loginUrl1'))) # Wait until the Login button is clickable
@@ -98,7 +98,7 @@ def login_to_SIS(driver, authenticate='Phone'):
     return None
 
 def get_semesters_list(driver):
-    wait = WebDriverWait(driver, 10)
+    wait = WebDriverWait(driver, 20)
     current_semesters = []
     current_cells = driver.find_elements(By.XPATH, "//tr[@class='ps_grid-row psc_rowact']")
     for cell in current_cells: # Find each semester's ID
@@ -126,7 +126,7 @@ def get_semesters_list(driver):
     return semesters_list, previous_semesters, current_semesters
 
 def switch_to_semester(driver, semester, previous_semesters):
-    wait = WebDriverWait(driver, 10)
+    wait = WebDriverWait(driver, 20)
     try:
         cur_page = driver.find_element(By.ID, "TERM_VAL_TBL_DESCR").text
     except:
