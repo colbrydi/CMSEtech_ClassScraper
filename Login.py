@@ -26,7 +26,7 @@ def get_driver(choice):
         return driver
     return None
         
-def login_to_SIS(driver):
+def login_to_SIS(driver, authenticate='Phone'):
     wait = WebDriverWait(driver, 10)
     url = "https://student.msu.edu/splash.html"
     driver.get(url)
@@ -53,16 +53,24 @@ def login_to_SIS(driver):
     
     buttons = driver.find_elements(By.CLASS_NAME, 'authenticator-button') # Get all button
     for button in buttons:
-        if button.get_attribute('data-se') == "phone_number":
-            button.click() # Click on authenticate by phone
-            break
+        if authenticate == 'Phone':
+            if button.get_attribute('data-se') == "phone_number":
+                button.click() # Click on authenticate by phone
+                break
+        if authenticate == 'Okta':
+            if button.get_attribute('data-se') == "okta_verify-totp":
+                button.click() # Click on authenticate by phone
+                break
     
     element = wait.until(EC.element_to_be_clickable((By.TAG_NAME, 'input'))) # Wait until the Receive code via SMS button is clickable
     element.click() # Click Receive code via SMS
     time.sleep(1)
     
     element = driver.find_element(By.TAG_NAME, "input") # Find the code input
-    print("Please enter your SMS code: ")
+    if authenticate == 'Phone':    
+        print("Please enter your SMS code: ")
+    if authenticate == 'Okta':
+        print("Please enter your Okta Verify code: ")
     code = input()
     element.send_keys(code)
      
