@@ -28,7 +28,8 @@ This repo can scrape from the website for courses' general information (credits,
 This repo can scrape from the website for classes' specific information (schedule, instructors, location, etc.). This feature is seen in <Dynamic_Scraper.ipynb>:
 
 - Go into Dynamic_Scraper.ipynb>
-- Run the first two code blocks. Please note that if you run this notebook in Jupyter you will see a Firefox popup window on your screen, but you won't be able to if you use JupyterHub
+- Run the first code block
+- In the second code block, there are two editable functions: `get_driver` and `login_to_SIS`. For `get_driver`, choose between 'Chrome' and 'Firefox' as your popup (there's no differences, but your machine might only be able to run on one, so test it out). Please note that if you run this notebook in Jupyter you will see a popup window on your screen, but you won't be able to if you use JupyterHub. For `login_to_SIS`, your authentication method can either be `Phone` or `Okta`, choose whichever one you prefer. Run the code block
 - Type in your MSU NetID (netid@msu.edu) and your MSU password (Don't worry it's redacted and won't last after the session) into the popup spaces
 - The function will choose the authorization method by Phone number, so you will receive an SMS code, please type this into the popup space
 - Run the next three code blocks, up until the second to last one
@@ -48,7 +49,8 @@ An instructor taught many courses across multiple semesters, this repo can help 
 - Go into <Get_FacNames.ipynb> and run the first five code blocks
 - Type in the cmsetech@msu.edu password into the popup space and run the rest of the notebook
 - <Get_FacNames.ipynb> is used to convert professors' NetIDs into their names
-- Go into <Scrape_by_Instructors.ipynb> and run the first two code blocks
+- Go into <Scrape_by_Instructors.ipynb> and run the first code block
+- In the second code block, there are two editable functions: `get_driver` and `login_to_SIS`. For `get_driver`, choose between 'Chrome' and 'Firefox' as your popup (there's no differences, but your machine might only be able to run on one, so test it out). Please note that if you run this notebook in Jupyter you will see a popup window on your screen, but you won't be able to if you use JupyterHub. For `login_to_SIS`, your authentication method can either be `Phone` or `Okta`, choose whichever one you prefer. Run the code block
 - Type in your MSU NetID (netid@msu.edu) and your MSU password (Don't worry it's redacted and won't last after the session) into the popup spaces
 - The function will choose the authorization method by Phone number, so you will receive an SMS code, please type this into the popup space
 - Run the next code block
