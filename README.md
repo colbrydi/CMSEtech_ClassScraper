@@ -31,7 +31,7 @@ This repo can scrape from the website for classes' specific information (schedul
 - Run the first code block
 - In the second code block, there are two editable functions: `get_driver` and `login_to_SIS`. For `get_driver`, choose between `Chrome` and `Firefox` as your popup (there's no differences, but your machine might only be able to run on one, so test it out). Please note that if you run this notebook in Jupyter you will see a popup window on your screen, but you won't be able to if you use JupyterHub. For `login_to_SIS`, your authentication method can either be `Phone` or `Okta`, choose whichever one you prefer. Run the code block
 - Type in your MSU NetID (netid@msu.edu) and your MSU password (Don't worry it's redacted and won't last after the session) into the popup spaces
-- The function will choose the authorization method by Phone number, so you will receive an SMS code, please type this into the popup space
+- You will either receive an SMS code or you can look up your Okta code based on your authenticate choice, please type this into the popup space
 - Run the next three code blocks, up until the second to last one
 - If you want to choose a different semester to scrape (Not Fall Semester 2024), you can change the second parameter of the `scrape_by_semester` function and also the name of the csv file you want to save your data into
 - Run the last two code blocks
@@ -52,7 +52,7 @@ An instructor taught many courses across multiple semesters, this repo can help 
 - Go into <Scrape_by_Instructors.ipynb> and run the first code block
 - In the second code block, there are two editable functions: `get_driver` and `login_to_SIS`. For `get_driver`, choose between `Chrome` and `Firefox` as your popup (there's no differences, but your machine might only be able to run on one, so test it out). Please note that if you run this notebook in Jupyter you will see a popup window on your screen, but you won't be able to if you use JupyterHub. For `login_to_SIS`, your authentication method can either be `Phone` or `Okta`, choose whichever one you prefer. Run the code block
 - Type in your MSU NetID (netid@msu.edu) and your MSU password (Don't worry it's redacted and won't last after the session) into the popup spaces
-- The function will choose the authorization method by Phone number, so you will receive an SMS code, please type this into the popup space
+- You will either receive an SMS code or you can look up your Okta code based on your authenticate choice, please type this into the popup space
 - Run the next code block
 - You can change the `start_semester` and `end_semester` parameters of the `search_multiple_semesters`function depending on how far back or ahead you want to scrape
 - Run the rest of the notebook. Note that this notebook takes a long time to run and might be quite fragile
