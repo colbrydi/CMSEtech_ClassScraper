@@ -122,7 +122,7 @@ def get_semesters_list(driver):
     time.sleep(1)
     
     previous_semesters.reverse()
-    semesters_list = previous_semesters + current_semesters
+    semesters_list = list(dict.fromkeys(previous_semesters + current_semesters))
     return semesters_list, previous_semesters, current_semesters
 
 def switch_to_semester(driver, semester, previous_semesters):
